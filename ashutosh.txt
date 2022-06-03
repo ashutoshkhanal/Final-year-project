@@ -1,0 +1,35 @@
+@startuml
+set namespaceSeparator ::
+
+class "animal_detection::home.dart::MyApp" {
+  +Widget* build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "animal_detection::home.dart::MyApp"
+
+class "animal_detection::main.dart::MyHomePage" {
+  +String* title
+  +_MyHomePageState* createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "animal_detection::main.dart::MyHomePage"
+
+class "animal_detection::main.dart::_MyHomePageState" {
+  +CameraImage* img
+  +CameraController* controller
+  +bool* isBusy
+  +String* result
+  +void initState()
+  +dynamic iniCamera()
+  +Future<void>* dispose()
+  +dynamic loadModel()
+  +dynamic startImageLabeling()
+  +Widget* build()
+}
+
+"animal_detection::main.dart::_MyHomePageState" o-- "camera::camera.dart::CameraImage"
+"animal_detection::main.dart::_MyHomePageState" o-- "camera::camera.dart::CameraController"
+"flutter::src::widgets::framework.dart::State" <|-- "animal_detection::main.dart::_MyHomePageState"
+
+
+@enduml
